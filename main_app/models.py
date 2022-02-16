@@ -19,6 +19,8 @@ class Cat(models.Model):
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
+    toys = models.ManyToManyField(Toy)
+    
     # changes to instance methods do not require re-generation / running of migrations
     def __str__(self):
         return self.name
