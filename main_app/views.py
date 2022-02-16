@@ -1,7 +1,9 @@
 from pyexpat import model
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Cat
+from .models import Cat, Toy
 from .forms import FeedingForm
 
 # Create your views here.
@@ -45,3 +47,23 @@ class CatUpdate(UpdateView):
 class CatDelete(DeleteView):
     model = Cat
     success_url = '/cats/'
+
+class ToyCreate(CreateView):
+    model = Toy
+    fields = ('name', 'color')
+
+class ToyUpdate(UpdateView):
+    model = Toy
+    fields = ('name', 'color')
+
+class ToyDelete(DeleteView):
+    model = Toy
+    success_url = '/toys/'
+
+class ToyDetail(DetailView):
+    model = Toy
+    template_name = 'toys/detail.html'
+
+class ToyList(ListView):
+    model = Toy
+    template_name = 'toys/index.html'
