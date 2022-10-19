@@ -48,8 +48,8 @@ def assoc_toy(request, cat_id, toy_id):
 
 class CatCreate(CreateView):
     model = Cat
-    fields = '__all__'
-    # success_url = '/cats/' 
+    fields = ['name','breed','description', 'age']
+    success_url = '/cats/' 
 
 class CatUpdate(UpdateView):
     model = Cat
